@@ -1,4 +1,4 @@
-package Classes;
+package classes;
 
 public class circleTest {
 
@@ -7,8 +7,6 @@ public class circleTest {
 		Circle c1 = new Circle();
 		Circle c2 = new Circle(25);
 		Circle c3 = new Circle(47);
-		
-		c3.setRadius(6.7);
 		
 		System.out.println("Circle 1 radius: " + 
 		c1.radius + " Circle 1 area: " + c1.getArea() +

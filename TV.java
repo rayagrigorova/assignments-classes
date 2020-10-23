@@ -1,4 +1,4 @@
-package Classes;
+package classes;
 
 public class TV {
 	public int channel;
@@ -6,7 +6,7 @@ public class TV {
 	public boolean on;
 	
 	public TV(){
-		channel = 1;
+		channel = 0;
 		volumeLevel = 1;
 		on = false;
 	}
@@ -15,7 +15,7 @@ public class TV {
 	public void turnOff(){on = false;}
 	
 	public void setChannel(int newChannel){
-		if(newChannel > 0 && newChannel <= 120){
+		if(newChannel >= 0 && newChannel <= 120){
 			channel = newChannel;
 		}
 		else{
@@ -40,7 +40,7 @@ public class TV {
 	}
 	
 	public void channelDown(){
-		channel = (channel > 0) ? channel - 1 : 120;
+		channel = (channel > 0)? channel - 1 : 120;
 		return;
 	}
 	
