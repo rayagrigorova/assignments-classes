@@ -21,4 +21,9 @@ public class Circle {
 	public double getArea(){
 		return radius * radius * Math.PI;
 	}
+	
+	public void setRadius (double newRadius){
+		if(newRadius >= 0){radius = newRadius; return;}
+		System.out.println("The radius must be a positive number");
+	}
 }
