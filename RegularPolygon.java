@@ -2,17 +2,17 @@ package Classes;
 
 public class RegularPolygon {
 	/*
-	 * * Private поле за данни int с име n, което определя броя на страните в
-	 * полигона със стойност по подразбиране 3.
+	 * * Private РїРѕР»Рµ Р·Р° РґР°РЅРЅРё int СЃ РёРјРµ n, РєРѕРµС‚Рѕ РѕРїСЂРµРґРµР»СЏ Р±СЂРѕСЏ РЅР° СЃС‚СЂР°РЅРёС‚Рµ РІ
+	 * РїРѕР»РёРіРѕРЅР° СЃСЉСЃ СЃС‚РѕР№РЅРѕСЃС‚ РїРѕ РїРѕРґСЂР°Р·Р±РёСЂР°РЅРµ 3.
 	 * 
-	 * Private double поле за данни с име sideLength, което съхранява дължината на
-	 * страните. Сойност по подразбиране 1.
+	 * Private double РїРѕР»Рµ Р·Р° РґР°РЅРЅРё СЃ РёРјРµ sideLength, РєРѕРµС‚Рѕ СЃСЉС…СЂР°РЅСЏРІР° РґСЉР»Р¶РёРЅР°С‚Р° РЅР°
+	 * СЃС‚СЂР°РЅРёС‚Рµ. РЎРѕР№РЅРѕСЃС‚ РїРѕ РїРѕРґСЂР°Р·Р±РёСЂР°РЅРµ 1.
 	 * 
-	 * Private double поле с данни, наречено x, което определя x-координатата на
-	 * центъра на със стойност по подразбиране 0.
+	 * Private double РїРѕР»Рµ СЃ РґР°РЅРЅРё, РЅР°СЂРµС‡РµРЅРѕ x, РєРѕРµС‚Рѕ РѕРїСЂРµРґРµР»СЏ x-РєРѕРѕСЂРґРёРЅР°С‚Р°С‚Р° РЅР°
+	 * С†РµРЅС‚СЉСЂР° РЅР° СЃСЉСЃ СЃС‚РѕР№РЅРѕСЃС‚ РїРѕ РїРѕРґСЂР°Р·Р±РёСЂР°РЅРµ 0.
 	 * 
-	 * Private double поле с данни, наречено у, което определя у-координатата на
-	 * центъра на със стойност по подразбиране 0.
+	 * Private double РїРѕР»Рµ СЃ РґР°РЅРЅРё, РЅР°СЂРµС‡РµРЅРѕ Сѓ, РєРѕРµС‚Рѕ РѕРїСЂРµРґРµР»СЏ Сѓ-РєРѕРѕСЂРґРёРЅР°С‚Р°С‚Р° РЅР°
+	 * С†РµРЅС‚СЉСЂР° РЅР° СЃСЉСЃ СЃС‚РѕР№РЅРѕСЃС‚ РїРѕ РїРѕРґСЂР°Р·Р±РёСЂР°РЅРµ 0.
 	 */
 	private int n;
 	private double sideLength;
@@ -20,8 +20,8 @@ public class RegularPolygon {
 	private double y;
 
 	/*
-	  Конструктор без аргументи, който създава многоъгълник със стойности по
-	  подразбиране.
+	  РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚Рё, РєРѕР№С‚Рѕ СЃСЉР·РґР°РІР° РјРЅРѕРіРѕСЉРіСЉР»РЅРёРє СЃСЉСЃ СЃС‚РѕР№РЅРѕСЃС‚Рё РїРѕ
+	  РїРѕРґСЂР°Р·Р±РёСЂР°РЅРµ.
 	 */
 	RegularPolygon(){
 		n = 3;
@@ -30,41 +30,56 @@ public class RegularPolygon {
 		y = 0;
 	}
 	/*
-	  Конструктор, който създава правилен многоъгълник с посочения брой страни и
-	  дължина на страната, центрирана в (0, 0).
+	  РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РєРѕР№С‚Рѕ СЃСЉР·РґР°РІР° РїСЂР°РІРёР»РµРЅ РјРЅРѕРіРѕСЉРіСЉР»РЅРёРє СЃ РїРѕСЃРѕС‡РµРЅРёСЏ Р±СЂРѕР№ СЃС‚СЂР°РЅРё Рё
+	  РґСЉР»Р¶РёРЅР° РЅР° СЃС‚СЂР°РЅР°С‚Р°, С†РµРЅС‚СЂРёСЂР°РЅР° РІ (0, 0).
 	 */
 	RegularPolygon(int n, double sideLength){
-		if(n >= 3 && sideLength > 0) {
+		
+		try {
+			if(n < 3) {throw new InvalidN();}
+			if (sideLength <= 0) {throw new InvalidSide();}
+			
 			this.n = n;
 			this.sideLength = sideLength;
 			x = 0;
 			y = 0;
 		}
-		else {
-			System.out.println("Invalid data");
+
+		catch (InvalidN | InvalidSide s) {
+			s.print();
+		}
+		catch (Exception e) {
+			System.out.println("How did you get here?");
 		}
 	}
 	
 	/*
-	 Конструктор, който създава правилен многоъгълник с посочения брой страни,
-	 дължина на страната и координати x и y.
+	 РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РєРѕР№С‚Рѕ СЃСЉР·РґР°РІР° РїСЂР°РІРёР»РµРЅ РјРЅРѕРіРѕСЉРіСЉР»РЅРёРє СЃ РїРѕСЃРѕС‡РµРЅРёСЏ Р±СЂРѕР№ СЃС‚СЂР°РЅРё,
+	 РґСЉР»Р¶РёРЅР° РЅР° СЃС‚СЂР°РЅР°С‚Р° Рё РєРѕРѕСЂРґРёРЅР°С‚Рё x Рё y.
 	 */
 	RegularPolygon(int n, double sideLength, double x, double y ){
-		if(n >= 3 && sideLength > 0) {
-			this.n = n;
-			this.sideLength = sideLength;
-			this.x = x;
-			this.y = y;
+		try {
+			if(n < 3) {throw new InvalidN();}
+			if(sideLength <= 0) {throw new InvalidSide();}
+				this.n = n;
+				this.sideLength = sideLength;
+				this.x = x;
+				this.y = y;
+	
 		}
-		else {
-			System.out.println("Invalid data");
+		catch(InvalidN | InvalidSide o) {
+			o.print();
+		}
+		catch (Exception e) {
+			System.out.println("How did you get here?");
 		}
 	}
 	
 	
+
 	/*
-	  Методите за достъп - аксесори и мутатотри (getter/setter) за всички полета с
-	  данни.
+	  РњРµС‚РѕРґРёС‚Рµ Р·Р° РґРѕСЃС‚СЉРї - Р°РєСЃРµСЃРѕСЂРё Рё РјСѓС‚Р°С‚РѕС‚СЂРё (getter/setter) Р·Р° РІСЃРёС‡РєРё РїРѕР»РµС‚Р° СЃ
+	  РґР°РЅРЅРё.
 	 */
 	
 	public int getN() {return n;}
@@ -73,22 +88,33 @@ public class RegularPolygon {
 	public double getY() {return y;}
 	
 	public void setN(int n) {
-		if(n > 3) {
+		try {
+			if (n < 3) {throw new InvalidN();}
+			
 			this.n = n;
 		}
-		else {
-			System.out.println("N must be >= 3");
+		catch (InvalidN x) {
+			x.print();
 		}
+		catch(Exception e) {
+			System.out.println("How did you get here?");
+		}
+		
 		return;
 	}
 	
 	
 	public void setSideLength(double sideLength) {
-		if(sideLength > 0) {
+		try {
+			if(sideLength <= 0) throw new InvalidSide();
+			
 			this.sideLength = sideLength;
 		}
-		else {
-			System.out.println("The side length must be > 0");
+		catch (InvalidSide x) {
+			x.print();
+		}
+		catch(Exception e) {
+			System.out.println("How did you get here?");
 		}
 		return;
 	}
@@ -104,20 +130,15 @@ public class RegularPolygon {
 	}
 	
 	/*
-	 * Методът getPerimeter (), който връща периметъра на полигона.
+	 * РњРµС‚РѕРґСЉС‚ getPerimeter (), РєРѕР№С‚Рѕ РІСЂСЉС‰Р° РїРµСЂРёРјРµС‚СЉСЂР° РЅР° РїРѕР»РёРіРѕРЅР°.
 	 */
 	public double  getPerimeter () {return n * sideLength;}
 	
 	
 	/*
-	  Методът getArea (), който връща площта на
-	  полигона. 
-	  Формулата за изчисляването на площта на правилен многоъгълник е
+	  РњРµС‚РѕРґСЉС‚ getArea (), РєРѕР№С‚Рѕ РІСЂСЉС‰Р° РїР»РѕС‰С‚Р° РЅР°
+	  РїРѕР»РёРіРѕРЅР°. 
+	  Р¤РѕСЂРјСѓР»Р°С‚Р° Р·Р° РёР·С‡РёСЃР»СЏРІР°РЅРµС‚Рѕ РЅР° РїР»РѕС‰С‚Р° РЅР° РїСЂР°РІРёР»РµРЅ РјРЅРѕРіРѕСЉРіСЉР»РЅРёРє Рµ
 	 */
 	public double getArea () {return (Math.pow(sideLength, 2) * n) / (4 * Math.tan(Math.PI / n));}
-	
-			 	 
-
-	
-
 }
