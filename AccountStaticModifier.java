@@ -6,7 +6,7 @@ public class AccountStaticModifier {
 	private int id;
 	private double balance;
 	private static double yearInterestRate;
-	private Date dateCreated ;
+	private Date dateCreated = new Date();
 	
 	AccountStaticModifier(){
 		id = 0;
